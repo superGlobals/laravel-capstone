@@ -26,7 +26,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'username',
         'email',
         'password',
         'role',
@@ -63,7 +66,14 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    protected function name(): Attribute
+    protected function first_name(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => ucwords($value)
+        );
+    }
+
+    protected function last_name(): Attribute
     {
         return Attribute::make(
             set: fn (string $value) => ucwords($value)

@@ -32,7 +32,7 @@ class Delete extends Component
         try {
             Course::destroy($this->id);
 
-            $this->dispatch('notify', title: 'success', message: 'Customer deleted successfully.');
+            $this->dispatch('notify', title: 'success', message: 'Course deleted successfully.');
 
             $this->deleteCourseModal = false;
 
