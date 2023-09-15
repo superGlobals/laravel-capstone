@@ -34,13 +34,13 @@ class Course extends Model
     {
         switch ($this->year) {
             case 1:
-                return '1st year';
+                return '1st Year';
             case 2:
-                return '2nd year';
+                return '2nd Year';
             case 3:
-                return '3rd year';
+                return '3rd Year';
             case 4:
-                return '4th year';
+                return '4th Year';
             default:
                 return $this->year;
         }
@@ -57,5 +57,12 @@ class Course extends Model
         }
 
         return $query->exists();
+    }
+
+    public function scopeSearch($query, $value)
+    {
+        $query->where('name', 'like', "%{$value}%")
+            ->orWhere('year', 'like', "%{$value}%")
+            ->orWhere('section', 'like', "%{$value}%");
     }
 }

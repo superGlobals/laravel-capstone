@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Admin\Course\Index as CourseIndex;
+use App\Livewire\Admin\Subject\SubjectIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,6 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/course', CourseIndex::class)->name('course.index');
+
+    Route::get('/subject', SubjectIndex::class)->name('subject.index');
 });

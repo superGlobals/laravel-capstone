@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Admin\Course;
 
-use App\Livewire\Forms\Admin\Course\CourseForm;
 use App\Models\Course;
 use Livewire\Component;
+use Illuminate\Support\Facades\Log;
+use App\Livewire\Forms\Admin\Course\CourseForm;
 
 class Create extends Component
 {

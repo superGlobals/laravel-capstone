@@ -15,15 +15,14 @@ class Table extends Component
     public CourseForm $form;
 
     public $paginate = 5;
+
     #[On('dispatch-course-save')]
     #[On('dispatch-course-edit')]
     #[On('dispatch-course-delete')]
     public function render()
     {
         return view('livewire.admin.course.table', [
-            'courses' => Course::where('name', 'like', '%' . $this->form->search . '%')
-                ->orWhere('year', 'like', '%' . $this->form->search . '%')
-                ->orWhere('section', 'like', '%' . $this->form->search . '%')
+            'courses' => Course::search($this->form->search)
                 ->orderBy('created_at', 'desc')
                 ->paginate($this->paginate)
         ]);

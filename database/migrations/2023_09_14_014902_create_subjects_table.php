@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained()->cascadeOnDelete();
-            $table->string('code')->unique();
-            $table->string('title');
+            $table->string('subject_code')->unique();
+            $table->string('subject_title');
             $table->integer('number_of_units')->nullable();
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
