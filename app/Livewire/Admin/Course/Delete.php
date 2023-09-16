@@ -27,10 +27,10 @@ class Delete extends Component
         $this->deleteCourseModal = true;
     }
 
-    public function delete()
+    public function delete(Course $course)
     {
         try {
-            Course::destroy($this->id);
+            $course->destroy($this->id);
 
             $this->dispatch('notify', title: 'success', message: 'Course deleted successfully.');
 

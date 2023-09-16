@@ -26,7 +26,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('admin.dashboard');
 
     Route::get('/course', CourseIndex::class)->name('course.index');
 

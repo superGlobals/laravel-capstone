@@ -21,6 +21,25 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+                // Check user role
+                if ($user->role === 'admin') {
+                    // Redirect admin to admin dashboard
+                    return redirect()->route('admin.dashboard');
+                } elseif ($user->role === 'teacher') {
+                    dd('teacher');
+                    // Redirect teacher to teacher dashboard
+                    // return redirect()->route('teacher.dashboard');
+                } else {
+                    // If role is not admin or teacher, return the user
+                    return $user;
+                }
+            }
+        });
+
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);

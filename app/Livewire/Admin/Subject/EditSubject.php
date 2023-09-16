@@ -7,6 +7,7 @@ use App\Models\Subject;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Livewire\Forms\Admin\Subject\SubjectForm;
+use Illuminate\Support\Facades\Log;
 
 class EditSubject extends Component
 {
@@ -20,6 +21,24 @@ class EditSubject extends Component
         $this->form->setSubject($id);
 
         $this->editSubjectModal = true;
+    }
+
+    public function editSubject()
+    {
+        $this->validate();
+
+        try {
+            $this->form->update();
+
+            $this->dispatch('notify', title: 'success', message: 'Course updated successfully.');
+
+            $this->editSubjectModal = false;
+
+            $this->dispatch('dispatch-subject-edit')->to(SubjectTable::class);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            $this->dispatch('notify', title: 'error', message: 'An error occurred.');
+        }
     }
 
     public function render()

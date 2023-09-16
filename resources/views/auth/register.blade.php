@@ -31,9 +31,8 @@
                 <x-label for="role" value="{{ __('Role') }}" />
                 <x-select name="role" class="mt-1 w-full">
                     <option value=""></option>
-                    <option value="admin">Admin</option>
                     <option value="student">Student</option>
-                    <option value="Teacher">Teacher</option>
+                    <option value="teacher">Teacher</option>
                 </x-select>
             </div>
 

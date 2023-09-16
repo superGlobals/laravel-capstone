@@ -45,7 +45,7 @@
                         <x-button @click="$dispatch('dispatch-subject-edit', {id: '{{ $subject->id }}'})"
                             type="button">Edit</x-button>
                         <x-danger-button
-                            @click="$dispatch('dispatch-subject-delete', {id: '{{ $subject->id }}', name: '{{ $subject->name }}' })">Delete</x-danger-button>
+                            @click="$dispatch('dispatch-subject-delete', {id: '{{ $subject->id }}', subject_title: '{{ $subject->subject_title }}' })">Delete</x-danger-button>
 
                     </td>
                 </tr>

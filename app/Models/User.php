@@ -33,6 +33,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'profile_photo_path'
 
     ];
 
@@ -66,14 +67,14 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    protected function first_name(): Attribute
+    protected function firstName(): Attribute
     {
         return Attribute::make(
             set: fn (string $value) => ucwords($value)
         );
     }
 
-    protected function last_name(): Attribute
+    protected function lastName(): Attribute
     {
         return Attribute::make(
             set: fn (string $value) => ucwords($value)

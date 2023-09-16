@@ -14,6 +14,8 @@ class SubjectTable extends Component
     public $paginate = 5;
 
     #[On('dispatch-subject-save')]
+    #[On('dispatch-subject-edit')]
+    #[On('dispatch-subject-delete')]
     public function render()
     {
         return view('livewire.admin.subject.subject-table', [

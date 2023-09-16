@@ -17,14 +17,14 @@ class Subject extends Model
         'number_of_units'
     ];
 
-    protected function subject_code(): Attribute
+    protected function subjectCode(): Attribute
     {
         return Attribute::make(
             set: fn (string $value) => strtoupper($value)
         );
     }
 
-    protected function subject_title(): Attribute
+    protected function subjectTitle(): Attribute
     {
         return Attribute::make(
             set: fn (string $value) => ucwords($value)

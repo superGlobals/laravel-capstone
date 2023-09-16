@@ -19,7 +19,7 @@ class SubjectForm extends Form
     #[Rule('required', as: 'course')]
     public $course_id;
 
-    #[Rule('required|unique:subjects,subject_code|min:3', as: 'subject code')]
+    #[Rule('required', Rule::unique('subjects')->ignore($this->id), 'min:3', as: 'subject code')]
     public $subject_code;
 
     #[Rule('required|min:3', as: 'subject title')]
