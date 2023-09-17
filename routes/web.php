@@ -2,6 +2,8 @@
 
 use App\Livewire\Admin\Course\Index as CourseIndex;
 use App\Livewire\Admin\Subject\SubjectIndex;
+use App\Livewire\Auth\Registration;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register', Registration::class)->name('register');
+
+// Route::view('/register', 'auth.register')->name('register');
 
 Route::middleware([
     'auth:sanctum', 'admin',
