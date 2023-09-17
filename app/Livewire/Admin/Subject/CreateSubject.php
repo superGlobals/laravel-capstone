@@ -34,7 +34,7 @@ class CreateSubject extends Component
     public function render()
     {
         return view('livewire.admin.subject.create-subject', [
-            'courses' => Course::select('id', 'name', 'year')
+            'courses' => Course::select('id', 'name', 'year', 'section')
                 ->whereIn('id', function ($query) {
                     $query->selectRaw('MIN(id)')
                         ->from('courses')

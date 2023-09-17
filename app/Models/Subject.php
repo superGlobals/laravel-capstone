@@ -37,4 +37,9 @@ class Subject extends Model
             ->orWhere('subject_title', 'like', "%{$value}%")
             ->orWhere('number_of_units', 'like', "%{$value}%");
     }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }

@@ -36,14 +36,13 @@ class Registration extends Component
 
     public function nextStep()
     {
-
         $this->validate([
             'first_name' => 'required|string|max:255',
-            'middle_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
         ]);
 
-        // Increment the step
+
         if ($this->currentStep < 2) {
             $this->currentStep++;
         }
@@ -75,8 +74,10 @@ class Registration extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        $this->reset();
+        // $this->reset();
 
         $this->dispatch('notify', title: 'success', message: 'Account created successfully.');
+
+        return to_route('login');
     }
 }

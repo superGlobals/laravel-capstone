@@ -4,7 +4,7 @@ namespace App\Livewire\Forms\Admin\Subject;
 
 use App\Models\Subject;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Illuminate\Validation\Rule;
 use Livewire\Form;
 
 class SubjectForm extends Form
@@ -16,13 +16,10 @@ class SubjectForm extends Form
     #[Locked]
     public $id;
 
-    #[Rule('required', as: 'course')]
     public $course_id;
 
-    #[Rule('required', Rule::unique('subjects')->ignore($this->id), 'min:3', as: 'subject code')]
     public $subject_code;
 
-    #[Rule('required|min:3', as: 'subject title')]
     public $subject_title;
 
     public $number_of_units;
@@ -48,5 +45,15 @@ class SubjectForm extends Form
     public function update()
     {
         $this->subject->update($this->except(['subject']));
+    }
+
+    public function rules()
+    {
+        return [
+            'course_id' => 'required',
+            'subject_code' => 'required', Rule::unique('subjects')->ignore($this->id),
+            'subject_title' => 'required',
+            'number_of_units' => 'nullable'
+        ];
     }
 }

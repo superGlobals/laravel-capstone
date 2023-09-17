@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\HahaController;
 use App\Livewire\Admin\Course\Index as CourseIndex;
 use App\Livewire\Admin\Subject\SubjectIndex;
 use App\Livewire\Auth\Registration;
-
+use App\Livewire\Teacher\Dashboard\TeacherDashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,16 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HahaController::class, 'haha']);
 
 Route::get('/register', Registration::class)->name('register');
 
-// Route::view('/register', 'auth.register')->name('register');
+
+/**
+ * ADMIN ROUTE
+ */
 
 Route::middleware([
-    'auth:sanctum', 'admin',
+    'auth:sanctum', 'role:admin',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
@@ -37,4 +39,16 @@ Route::middleware([
     Route::get('/course', CourseIndex::class)->name('course.index');
 
     Route::get('/subject', SubjectIndex::class)->name('subject.index');
+});
+
+/**
+ * TEACHER ROUTE
+ */
+
+Route::middleware([
+    'auth:sanctum', 'role:teacher',
+    config('jetstream.auth_session'),
+    'verified',
+])->prefix('teacher')->name('teacher.')->group(function () {
+    Route::get('/dashboard', TeacherDashboard::class)->name('dashboard');
 });

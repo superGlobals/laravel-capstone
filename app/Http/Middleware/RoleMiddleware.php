@@ -6,19 +6,19 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureUserIsTeacher
+class RoleMiddleware
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        $user = auth()->user();
+        $user = $request->user();
 
-        if (!$user || $user->role !== 'teacher') {
-            return abort(403, 'Unauthorized');
+        if (!in_array($user->role, $roles)) {
+            abort(403, 'Unauthorized');
         }
 
         return $next($request);

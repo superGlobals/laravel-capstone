@@ -46,6 +46,11 @@ class Course extends Model
         }
     }
 
+    public function courseYearSection()
+    {
+        return $this->name . '-' . $this->year . '' . $this->section;
+    }
+
     public static function checkIfCourseExists($name, $year, $section, $id = null)
     {
         $query = self::where('name', $name)
@@ -64,5 +69,10 @@ class Course extends Model
         $query->where('name', 'like', "%{$value}%")
             ->orWhere('year', 'like', "%{$value}%")
             ->orWhere('section', 'like', "%{$value}%");
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
     }
 }
