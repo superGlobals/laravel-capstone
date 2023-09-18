@@ -22,8 +22,7 @@ class CourseForm extends Form
     #[Rule('required')]
     public $year;
 
-    #[Rule('required')]
-    public $section;
+
 
     public function setCourse(Course $course)
     {
@@ -32,7 +31,6 @@ class CourseForm extends Form
         $this->id = $course->id;
         $this->name = $course->name;
         $this->year = $course->year;
-        $this->section = $course->section;
     }
 
     public function store()

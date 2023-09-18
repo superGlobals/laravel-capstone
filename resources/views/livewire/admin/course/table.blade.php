@@ -27,9 +27,7 @@
                 <th class="p-2 whitespace-nowrap">
                     Year
                 </th>
-                <th class="p-2 whitespace-nowrap">
-                    Section
-                </th>
+
                 <th class="p-2 whitespace-nowrap">Action</th>
             </tr>
 
@@ -40,7 +38,6 @@
                     <td class="p-2 text-center">{{ $course->id }}</td>
                     <td class="p-2 text-center">{{ $course->name }}</td>
                     <td class="p-2 text-center">{{ $course->customYear() }}</td>
-                    <td class="p-2 text-center">{{ $course->section }}</td>
                     <td class="p-2 text-center">
                         <x-button @click="$dispatch('dispatch-course-edit', {id: '{{ $course->id }}'})"
                             type="button">Edit</x-button>

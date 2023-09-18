@@ -27,7 +27,7 @@ class Edit extends Component
         $this->validate();
 
         try {
-            if (Course::checkIfCourseExists($this->form->name, $this->form->year, $this->form->section, $this->form->id)) {
+            if (Course::checkIfCourseExists($this->form->name, $this->form->year, $this->form->id)) {
                 return $this->dispatch('notify', title: 'error', message: 'Course alreary added.');
             }
 

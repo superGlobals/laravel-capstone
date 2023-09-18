@@ -75,9 +75,8 @@ class Registration extends Component
         ]);
 
         // $this->reset();
-
         $this->dispatch('notify', title: 'success', message: 'Account created successfully.');
 
-        return to_route('login');
+        return $this->redirect(route('login'), true);
     }
 }

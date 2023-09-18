@@ -13,7 +13,6 @@ class Course extends Model
     protected $fillable = [
         'name',
         'year',
-        'section'
     ];
 
     protected function name(): Attribute
@@ -23,12 +22,7 @@ class Course extends Model
         );
     }
 
-    protected function section(): Attribute
-    {
-        return Attribute::make(
-            set: fn (string $value) => strtoupper($value)
-        );
-    }
+
 
     public function customYear()
     {
@@ -48,14 +42,13 @@ class Course extends Model
 
     public function courseYearSection()
     {
-        return $this->name . '-' . $this->year . '' . $this->section;
+        return $this->name . '-' . $this->year;
     }
 
-    public static function checkIfCourseExists($name, $year, $section, $id = null)
+    public static function checkIfCourseExists($name, $year, $id = null)
     {
         $query = self::where('name', $name)
-            ->where('year', $year)
-            ->where('section', $section);
+            ->where('year', $year);
 
         if ($id !== null) {
             $query->where('id', '!=', $id);
@@ -67,8 +60,7 @@ class Course extends Model
     public function scopeSearch($query, $value)
     {
         $query->where('name', 'like', "%{$value}%")
-            ->orWhere('year', 'like', "%{$value}%")
-            ->orWhere('section', 'like', "%{$value}%");
+            ->orWhere('year', 'like', "%{$value}%");
     }
 
     public function subjects()

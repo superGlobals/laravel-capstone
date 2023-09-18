@@ -2,7 +2,7 @@
     {{-- Success is as dangerous as failure. --}}
     <x-button @click="$wire.set('createTeacherClassModal', true)">New Class</x-button>
 
-    <x-dialog-modal wire:model.live="createTeacherClassModal" submit="save">
+    <x-dialog-modal wire:model.live="createTeacherClassModal" submit="saveTeacherClass">
         <x-slot name="title">
             Create Class
         </x-slot>

@@ -34,15 +34,22 @@ class CreateSubject extends Component
     public function render()
     {
         return view('livewire.admin.subject.create-subject', [
-            'courses' => Course::select('id', 'name', 'year', 'section')
-                ->whereIn('id', function ($query) {
-                    $query->selectRaw('MIN(id)')
-                        ->from('courses')
-                        ->groupBy('name', 'year');
-                })
-                ->orderBy('name')
-                ->orderBy('year')
-                ->get()
+            'courses' => Course::all()
         ]);
     }
+
+    // public function render()
+    // {
+    //     return view('livewire.admin.subject.create-subject', [
+    //         'courses' => Course::select('id', 'name', 'year', 'section')
+    //             ->whereIn('id', function ($query) {
+    //                 $query->selectRaw('MIN(id)')
+    //                     ->from('courses')
+    //                     ->groupBy('name', 'year');
+    //             })
+    //             ->orderBy('name')
+    //             ->orderBy('year')
+    //             ->get()
+    //     ]);
+    // }
 }

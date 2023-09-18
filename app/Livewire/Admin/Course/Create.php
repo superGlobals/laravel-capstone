@@ -18,7 +18,7 @@ class Create extends Component
         $this->validate();
 
         try {
-            if (Course::checkIfCourseExists($this->form->name, $this->form->year, $this->form->section)) {
+            if (Course::checkIfCourseExists($this->form->name, $this->form->year)) {
                 return $this->dispatch('notify', title: 'error', message: 'Course alreary added.');
             }
 
