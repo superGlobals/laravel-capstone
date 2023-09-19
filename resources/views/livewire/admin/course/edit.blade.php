@@ -8,14 +8,14 @@
 
         <x-slot name="content">
             <div class="grid grid-col-12 gap-4">
-                {{-- Name --}}
+                {{-- Course --}}
                 <div class="col-span-12">
                     <x-label for="form.name" value="Course" />
                     <x-input wire:model="form.name" id="form.name" type="text" class="mt-1 w-full" />
                     <x-input-error for="form.name" class="mt-1" />
                 </div>
 
-                {{-- Email --}}
+                {{-- Year --}}
                 <div class="col-span-12">
                     <x-label for="form.year" value="Year" />
                     <x-select wire:model="form.year" class="mt-1 w-full">
@@ -25,13 +25,6 @@
                         <option value="4">4th Year</option>
                     </x-select>
                     <x-input-error for="form.year" class="mt-1" />
-                </div>
-
-                {{-- Address --}}
-                <div class="col-span-12">
-                    <x-label for="form.section" value="Section" />
-                    <x-input wire:model="form.section" id="form.section" type="text" class="mt-1 w-full" />
-                    <x-input-error for="form.section" class="mt-1" />
                 </div>
             </div>
 

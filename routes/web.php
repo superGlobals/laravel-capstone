@@ -4,6 +4,7 @@ use App\Http\Controllers\HahaController;
 use App\Livewire\Admin\Course\Index as CourseIndex;
 use App\Livewire\Admin\Subject\SubjectIndex;
 use App\Livewire\Auth\Registration;
+use App\Livewire\Teacher\Class\IndexClass;
 use App\Livewire\Teacher\Dashboard\TeacherDashboard;
 use Illuminate\Support\Facades\Route;
 
@@ -51,4 +52,6 @@ Route::middleware([
     'verified',
 ])->prefix('teacher')->name('teacher.')->group(function () {
     Route::get('/dashboard', TeacherDashboard::class)->name('dashboard');
+
+    Route::get('/{id}/class', IndexClass::class)->name('class');
 });

@@ -15,7 +15,7 @@
                     <x-select wire:model="form.course_id" class="mt-1 w-full">
                         <option value=""></option>
                         @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->courseYearSection() }}
+                            <option value="{{ $course->id }}">{{ $course->courseYear() }}
                             </option>
                         @endforeach
                     </x-select>

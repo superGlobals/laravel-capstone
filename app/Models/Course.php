@@ -22,8 +22,6 @@ class Course extends Model
         );
     }
 
-
-
     public function customYear()
     {
         switch ($this->year) {
@@ -40,9 +38,9 @@ class Course extends Model
         }
     }
 
-    public function courseYearSection()
+    public function courseYear()
     {
-        return $this->name . '-' . $this->year;
+        return $this->name . '-' . $this->customYear();
     }
 
     public static function checkIfCourseExists($name, $year, $id = null)

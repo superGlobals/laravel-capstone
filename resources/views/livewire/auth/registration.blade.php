@@ -34,7 +34,7 @@
                 <!-- Step 2 Fields -->
                 <div>
                     <x-label for="role" value="{{ __('Role') }}" />
-                    <x-select wire:model="role" class="mt-1 w-full">
+                    <x-select wire:model.live="role" class="mt-1 w-full">
                         <option value=""></option>
                         <option value="student">Student</option>
                         <option value="teacher">Teacher</option>
@@ -43,9 +43,17 @@
                 </div>
                 <!-- Username Field -->
                 <div class="mt-4">
-                    <x-label for="username" value="{{ __('Username') }}" />
-                    <x-input id="username" class="block mt-1 w-full" type="text" wire:model="username" autofocus />
-                    <x-input-error for="username" class="mt-1" />
+                    @if ($role === 'teacher')
+                        <x-label for="username" value="{{ __('Teacher Number') }}" />
+                        <x-input id="username" class="block mt-1 w-full" type="text" wire:model="username"
+                            autofocus />
+                        <x-input-error for="username" class="mt-1" />
+                    @elseif($role === 'student')
+                        <x-label for="username" value="{{ __('Student Number') }}" />
+                        <x-input id="username" class="block mt-1 w-full" type="text" wire:model="username"
+                            autofocus />
+                        <x-input-error for="username" class="mt-1" />
+                    @endif
                 </div>
                 <!-- Email Field -->
                 <div class="mt-4">

@@ -14,7 +14,7 @@ class TeacherDashboard extends Component
     #[On('dispatch-teacherClass-save')]
     public function render()
     {
-        $teacherClass = TeacherClass::with('teacher', 'course', 'subject')
+        $teacherClass = TeacherClass::with('course:id,name,year', 'subject:id,subject_title,subject_code', 'section:id,name')
             ->where('user_id', Auth::id())
             ->get();
         return view('livewire.teacher.dashboard.teacher-dashboard', [

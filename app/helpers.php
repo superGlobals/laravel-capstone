@@ -1,16 +1,17 @@
 <?php
 
-function changeClassCardBorder($class)
+function changeClassCardBorder($courseName)
 {
-  if ($class === 'BSIT') {
-    return 'border-orange-500';
-  }
-
-  if ($class === 'BSBA') {
-    return 'border-green-500';
-  }
-
-  if ($class === 'BEED' || $class === 'BSED') {
-    return 'border-blue-500';
+  switch ($courseName) {
+    case 'BSIT':
+      return 'border-orange-500';
+    case 'BSBA':
+      return 'border-blue-500';
+    case 'BEED':
+      return 'border-green-500';
+    case 'BSED':
+      return 'border-green-500';
+    default:
+      return 'border-gray-500';
   }
 }

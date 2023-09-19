@@ -17,14 +17,27 @@
                     <x-select wire:model.live="course_id" class="mt-1 w-full">
                         <option value=""></option>
                         @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->courseYearSection() }}
+                            <option value="{{ $course->id }}">{{ $course->courseYear() }}
                             </option>
                         @endforeach
                     </x-select>
                     <x-input-error for="course_id" class="mt-1" />
                 </div>
 
-                {{-- Class --}}
+                {{-- Section --}}
+                <div class="col-span-12">
+                    <x-label for="section_id" value="Section Name" />
+                    <x-select wire:model.live="section_id" class="mt-1 w-full">
+                        <option value=""></option>
+                        @foreach ($sections as $section)
+                            <option value="{{ $section->id }}">{{ $section->name }}
+                            </option>
+                        @endforeach
+                    </x-select>
+                    <x-input-error for="section_id" class="mt-1" />
+                </div>
+
+                {{-- Subject --}}
                 <div class="col-span-12">
                     <x-label for="subject_id" value="Subject Name" />
                     <x-select wire:model="subject_id" class="mt-1 w-full">

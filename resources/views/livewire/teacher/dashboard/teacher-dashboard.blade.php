@@ -23,14 +23,22 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
 
+
                         @forelse ($data as $teacherClass)
-                            <a wire:navigate href="">
+                            <a wire:navigate href="{{ route('teacher.class', $teacherClass->id) }}">
                                 <div
                                     class="bg-white overflow-hidden shadow-md rounded-md border-t-4 {{ changeClassCardBorder($teacherClass->course->name) }}">
                                     <div class="p-6">
+                                        {{-- <h2>Today: 4PM - 5PM</h2> --}}
                                         <h2 class="text-xl font-semibold text-gray-900">
-                                            {{ $teacherClass->course->courseYearSection() }}</h2>
-                                        <p class="mt-2 text-gray-600">{{ $teacherClass->subject->subject_code }}</p>
+                                            {{ $teacherClass->courseYearSection() }}
+                                        </h2>
+                                        <p class="mt-1 font-semibold text-gray-600">
+                                            {{ $teacherClass->subject->subject_title }}</p>
+                                        <p class="mb-1 text-sm text-gray-600">{{ $teacherClass->subject->subject_code }}
+                                        </p>
+                                        <hr>
+
                                     </div>
                                 </div>
                             </a>
