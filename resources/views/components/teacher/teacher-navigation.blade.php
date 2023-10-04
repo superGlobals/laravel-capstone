@@ -2,6 +2,6 @@
     {{ __('Dashboard') }}
 </x-nav-link>
 
-<x-nav-link wire:navigate href="{{ route('course.index') }}" :active="request()->routeIs('course.index')">
-    {{ __('Quizezz') }}
+<x-nav-link wire:navigate href="{{ route('teacher.quiz') }}" :active="request()->routeIs('teacher.quiz')">
+    {{ __('Quiz') }}
 </x-nav-link>

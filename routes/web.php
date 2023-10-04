@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\HahaController;
-use App\Livewire\Admin\Course\Index as CourseIndex;
-use App\Livewire\Admin\Subject\SubjectIndex;
 use App\Livewire\Auth\Registration;
-use App\Livewire\Teacher\Class\IndexClass;
-use App\Livewire\Teacher\Dashboard\TeacherDashboard;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HahaController;
+use App\Livewire\Teacher\Quiz\IndexQuiz;
+use App\Livewire\Teacher\Class\IndexClass;
+use App\Livewire\Admin\Subject\SubjectIndex;
+use App\Livewire\Admin\Course\Index as CourseIndex;
+use App\Livewire\Teacher\Dashboard\TeacherDashboard;
+use App\Livewire\Teacher\Quiz\CreateQuiz;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,8 @@ Route::middleware([
     Route::get('/subject', SubjectIndex::class)->name('subject.index');
 });
 
+
+
 /**
  * TEACHER ROUTE
  */
@@ -52,6 +56,7 @@ Route::middleware([
     'verified',
 ])->prefix('teacher')->name('teacher.')->group(function () {
     Route::get('/dashboard', TeacherDashboard::class)->name('dashboard');
-
     Route::get('/{id}/class', IndexClass::class)->name('class');
+    Route::get('/quiz', IndexQuiz::class)->name('quiz');
+    Route::get('/create-quiz', CreateQuiz::class)->name('create-quiz');
 });

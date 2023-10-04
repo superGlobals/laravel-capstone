@@ -67,7 +67,7 @@ class CreateClass extends Component
             $this->reset();
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            $this->dispatch('notify', title: 'error', message: 'An error occurred.');
+            $this->dispatch('notify', title: 'error', message: 'asdasdasAn error occurred.');
         }
     }
 

@@ -12,6 +12,6 @@ function changeClassCardBorder($courseName)
     case 'BSED':
       return 'border-green-500';
     default:
-      return 'border-gray-500';
+      return 'border-indigo-500';
   }
 }

@@ -80,4 +80,14 @@ class User extends Authenticatable
             set: fn (string $value) => ucwords($value)
         );
     }
+
+    public function teacherClassStudentsAsTeacher()
+    {
+        return $this->hasMany(TeacherClass::class, 'teacher_id');
+    }
+
+    public function teacherClassStudentsAsStudent()
+    {
+        return $this->hasMany(TeacherClass::class, 'student_id');
+    }
 }
